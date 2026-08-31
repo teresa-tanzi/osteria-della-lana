@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-paper: var(--paper);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-berry: var(--berry);
+  --color-moss: var(--moss);
+  --color-gold: var(--gold);
+  --color-dark: var(--dark);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+  --font-mono: var(--font-label);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f3efe5;
+  --foreground: #29271f;
+  --paper: #f3efe5;
+  --cream: #fffaf0;
+  --ink: #29271f;
+  --berry: #9a4162;
+  --moss: #4d604c;
+  --gold: #bd8733;
+  --dark: #252b25;
+  --font-body: Arial, sans-serif;
+  --font-display: Georgia, serif;
+  --font-label: 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--paper); }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); }
+::selection { background: var(--berry); color: var(--cream); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
