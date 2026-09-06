@@ -27,37 +27,39 @@ export const site = {
     scrollAria: 'Scopri la storia',
   },
   intro: {
-    eyebrow: 'Le Beetoneghe', title: 'Una storia fatta di mani, lana e parole.',
-    paragraphs: ["Beetoneghe è una parola del nostro dialetto. Viene da ‘bee’, pecora, e si usa con affetto per indicare donne chiacchierone, curiose, sempre pronte a fare comunità.", 'Siamo partite dalle nostre pecore, dalla voglia di tornare a fare con calma e dal desiderio di aprire una porta. Oggi quella porta dà su un laboratorio, un piccolo emporio e una tavola imbandita.'],
+    eyebrow: 'Chi siamo', title: 'Siamo le Beetoneghe.',
+    paragraphs: ["Il nostro nome nasce dal dialetto: 'bee' significa pecora, una parola onomatopeica che ne richiama il belato; le betoneghe sono invece le pettegole, le impiccione, le chiacchierone, detto con quell’accezione affettuosa che parla di curiosità, condivisione e voglia di stare insieme.", 'Mentre le mani lavorano, le parole circolano. Ci raccontiamo, ci confrontiamo, impariamo le une dalle altre e ci scambiamo idee, esperienze e saperi.'],
     quote: 'Intrecciamo filati, saperi, storie e relazioni.'
   },
   story: {
     eyebrow: 'La filiera', title: 'Dalla pecora alle nostre mani',
-    text: 'Ogni fibra racconta il luogo da cui proviene. Tosiamo con cura, laviamo la lana nelle acque della valle, la cardiamo e la filiamo a mano. Poi arrivano i colori: piante, fiori, cortecce e bacche raccolti nei dintorni. Infine tessiamo e lavoriamo ogni pezzo lentamente, uno alla volta.',
+    text: ['Tutto comincia dalle nostre pecore, che pascolano nei prati della Valsassina.', 'Non acquistiamo filati già pronti. La lana viene tosata, cardata e filata da noi. Poi la tingiamo con colori ricavati dalle piante e la trasformiamo attraverso la tessitura, la maglia e il feltro.', 'Dalla pecora al filo, dal filo all’oggetto finito: ogni lavorazione è fatta da noi.'],
     image: '/images/story.jpeg',
     imageAlt: 'Mani che filano la lana',
     linkText: 'Guarda le creazioni',
   },
   process: {
-    eyebrow: 'Il gesto', title: 'Il viaggio della nostra lana.',
+    eyebrow: 'Dalla pecora alla lana', title: 'Il viaggio della nostra lana.',
     intro: 'Ogni passaggio conserva il carattere della materia e il gesto di chi la lavora. È un percorso lento, concreto, fatto di esperienza, pazienza e attenzione.',
     items: [
-      { title: 'Tosatura e lavaggio', text: 'Dopo la tosatura, la lana delle nostre pecore è la materia da cui parte tutto.', image: '/images/process-1.jpeg' },
+      { title: 'La lana', text: 'Dopo la tosatura, la lana delle nostre pecore è la materia da cui parte tutto.', image: '/images/process-1.jpeg' },
       { title: 'Cardatura', text: 'Prepariamo le fibre alla filatura, lavorandole con le carde fino a renderle pronte per diventare filo.', image: '/images/process-2.jpeg' },
       { title: 'Filatura a mano', text: 'La fibra passa attraverso le nostre mani e diventa il filato con cui daremo forma alle creazioni.', image: '/images/process-3.jpeg' },
     ],
   },
   colors: {
-    eyebrow: 'Botanica locale', title: 'I colori della Valsassina',
-    text: 'Prepariamo tinture naturali utilizzando colori ricavati dalle piante. Raccogliamo, prepariamo, estraiamo il colore e sperimentiamo sulle nostre lane.\n' +
-        '\n\n' +
-        'Il risultato non è mai completamente prevedibile: cambiano le piante, i bagni di colore e le fibre, e con loro cambiano le sfumature. È proprio questa variabilità a rendere ogni filato diverso.',
+    eyebrow: 'I colori delle piante', title: 'La natura entra nel filo.',
+    text: [
+      'Prepariamo tinture naturali utilizzando colori ricavati dalle piante. Raccogliamo, prepariamo, estraiamo il colore e sperimentiamo sulle nostre lane.',
+      'Il risultato non è mai completamente prevedibile: cambiano le piante, i bagni di colore e le fibre, e con loro cambiano le sfumature. È proprio questa variabilità a rendere ogni filato diverso.',
+    ],
+    quote: 'I colori delle nostre creazioni cominciano nella natura.',
     image: '/images/colors.jpeg',
     imageAlt: 'Fiori e piante per la tintura naturale',
     swatches: ['#c4bd4e', '#67678a', '#893a1b'],
   },
   creations: {
-    eyebrow: 'Fatte qui', title: 'Le creazioni',
+    eyebrow: 'Le nostre creazioni', title: 'Dal filo all\'idea',
     intro: 'Tessiamo, lavoriamo a maglia, infeltriamo e sperimentiamo. Nascono così borse, tappeti, arazzi, cappelli e coloratissime palle di lana: pezzi unici, realizzati a mano.',
     items: [
       ['Coperte', '/images/creations-1.jpeg'],
@@ -68,29 +70,34 @@ export const site = {
     ] as [string, string][],
   },
   osteria: {
-    eyebrow: 'Il nostro posto', title: "L’Osteria",
-    text: 'Un luogo per fermarsi. Qui la lana incontra il pane, il lavoro incontra la festa e ogni persona può sedersi al tavolo. Passa a trovarci in Valsassina: il laboratorio è aperto, il caffè è già sul fuoco.',
+    eyebrow: 'Dove ci troviamo', title: "L’Antica Osteria",
+    text: [
+      'Ci ritroviamo in una vecchia osteria della Valsassina, un luogo antico e bellissimo che conserva gli arredi e l’atmosfera di una volta.',
+      'È qui che arrivano lane, fusi, telai, ferri, piante, colori e idee. Qui lavoriamo, sperimentiamo, impariamo, raccontiamo e ridiamo. E naturalmente facciamo un po’ le Beetoneghe.',
+      'Gli oggetti e gli ambienti raccontano il passato; quello che facciamo insieme continua quella storia senza copiarla.',
+    ],
     image: '/images/osteria.jpeg',
     imageAlt: "L'Osteria",
   },
   values: {
-    eyebrow: 'Quello in cui crediamo', title: 'Il filo che ci tiene insieme.',
+    eyebrow: 'Il nostro filo', title: 'Natura, saperi, relazioni.',
     items: [
-      { num: '1', label: 'Filiera a km zero e sostenibile', text: 'Le pecore, i prati della Valsassina, le piante e l’osteria: il nostro lavoro nasce da un luogo preciso e ne porta con sé il carattere.' },
-      { num: '2', label: 'Saperi tradizionali e fatti a mano', text: 'Tosatura, cardatura, filatura, tintura, tessitura, maglia e feltro: il processo non viene semplicemente seguito, viene fatto da noi.' },
-      { num: '3', label: 'Comunità, cura e accoglienza', text: 'La lana ci riunisce intorno allo stesso tavolo. Un sapere passa da una donna all’altra, una chiacchiera diventa un’idea, un filo diventa legame.' },
+      { num: '1', label: 'Territorio', text: 'Le pecore, i prati della Valsassina, le piante e l’osteria: il nostro lavoro nasce da un luogo preciso e ne porta con sé il carattere.' },
+      { num: '2', label: 'Mani', text: 'Tosatura, cardatura, filatura, tintura, tessitura, maglia e feltro: il processo non viene semplicemente seguito, viene fatto da noi.' },
+      { num: '3', label: 'Relazioni', text: 'La lana ci riunisce intorno allo stesso tavolo. Un sapere passa da una donna all’altra, una chiacchiera diventa un’idea, un filo diventa legame.' },
     ],
   },
   cta: {
-    eyebrow: 'Vieni a trovarci', title: 'Tieni un filo con noi.',
-    text: 'Scrivici per visitare il laboratorio, conoscere le pecore o scegliere una creazione fatta a mano.',
+    eyebrow: 'Osteria della lana', title: 'Un filo che unisce.',
+    text: 'Dalla pecora al filo. Dal filo alle nostre creazioni. E, sempre, da una persona all’altra.',
     linkText: 'Scrivici',
     email: 'osteriadellalana@gmail.com',
-    logo: '/images/logo-full.png',
+  },
+  logoSection: {
+    image: '/images/logo-full.png',
   },
   footer: {
     location: 'Valsassina, Lecco · Italia',
     backToTopText: 'Torna su',
-    instagramAria: 'Instagram',
   },
 }
