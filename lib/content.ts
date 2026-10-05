@@ -1,5 +1,5 @@
 import { site } from '@/lib/data'
-import { conform, type SiteContent } from '@/lib/content-schema'
+import { conformSite, type SiteContent } from '@/lib/content-schema'
 import { sql } from '@/lib/db'
 
 // Legge i contenuti dal database. Se il DB non è configurato, è vuoto o non risponde,
@@ -8,7 +8,7 @@ export async function getContent(): Promise<SiteContent> {
   if (!process.env.DATABASE_URL) return site
   try {
     const rows = await sql()`SELECT data FROM site_content WHERE id = 1`
-    return rows[0] ? conform(site, rows[0].data) : site
+    return rows[0] ? conformSite(rows[0].data) : site
   } catch (error) {
     console.error('Lettura contenuti dal database fallita, uso i default', error)
     return site

@@ -3,9 +3,8 @@
 import { timingSafeEqual } from 'node:crypto'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
-import { conform, type SiteContent } from '@/lib/content-schema'
+import { conformSite } from '@/lib/content-schema'
 import { saveContent } from '@/lib/content'
-import { site } from '@/lib/data'
 import { checkPassword, createSession, deleteSession, isAuthenticated } from '@/lib/session'
 import { clearFailures, recordFailure, tooManyAttempts } from '@/lib/throttle'
 
@@ -40,8 +39,7 @@ export async function logout() {
 export async function save(data: unknown): Promise<{ ok: boolean; error?: string }> {
   if (!(await isAuthenticated())) return { ok: false, error: 'Sessione scaduta: effettua di nuovo il login.' }
   try {
-    // Nav e etichette di accessibilità non sono modificabili da /backoffice: restano quelle di default.
-    const content: SiteContent = { ...conform(site, data), nav: site.nav, header: site.header }
+    const content = conformSite(data)
     await saveContent(content)
     revalidatePath('/')
     return { ok: true }

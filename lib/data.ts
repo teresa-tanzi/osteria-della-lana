@@ -7,13 +7,18 @@
 export const site = {
   brand: 'Osteria della Lana',
   kicker: 'Valsassina · Lana · Mani · Relazioni',
-  nav: [
-    ['Le Beetoneghe', '#beetoneghe'],
-    ['Dalla pecora alle nostre mani', '#filo'],
-    ['I colori', '#colori'],
-    ['Le creazioni', '#creazioni'],
-    ["L'Osteria", '#osteria'],
-  ],
+  // Etichette del menu per sezione: il menu segue l'ordine scelto nel backoffice.
+  nav: {
+    intro: 'Le Beetoneghe',
+    story: 'Dalla pecora alle nostre mani',
+    colors: 'I colori',
+    creations: 'Le creazioni',
+    osteria: "L'Osteria",
+    events: 'Eventi',
+  } as Record<string, string>,
+  // Ordine delle sezioni tra la prima schermata e i contatti. Il layout (foto a sinistra/destra,
+  // sfondo chiaro/scuro) dipende dalla posizione, non dalla sezione.
+  order: ['intro', 'story', 'process', 'colors', 'creations', 'osteria', 'events', 'values'],
   header: {
     openMenuAria: 'Apri menu',
     closeMenuAria: 'Chiudi menu',
@@ -78,6 +83,12 @@ export const site = {
     ],
     image: '/images/osteria.jpeg',
     imageAlt: "L'Osteria",
+  },
+  events: {
+    eyebrow: 'Appuntamenti', title: 'I prossimi eventi',
+    intro: '',
+    // Vuota di proposito: la sezione compare sul sito solo quando c'è almeno un evento.
+    items: [] as { title: string; date: string; place: string; text: string; image: string; imageAlt: string }[],
   },
   values: {
     eyebrow: 'Il nostro filo', title: 'Natura, saperi, relazioni.',
