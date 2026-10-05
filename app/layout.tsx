@@ -4,7 +4,7 @@ import { IBM_Plex_Mono } from 'next/font/google'
 import './globals.css'
 
 // Font delle etichette (menu, sopratitoli, pulsanti): più leggibile di Courier New.
-const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-label', display: 'swap' })
+const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '600'], variable: '--font-label', display: 'swap' })
 
 export const metadata: Metadata = {
   title: 'Osteria della Lana — Le Beetoneghe',

@@ -10,7 +10,7 @@ export function LoginForm() {
   return (
     <form action={action} className="w-full max-w-sm space-y-6">
       <div>
-        <p className="font-mono text-xs uppercase tracking-[0.24em] text-berry">Admin</p>
+        <p className="font-mono font-semibold text-sm uppercase tracking-[0.24em] text-berry">Admin</p>
         <h1 className="mt-3 font-serif text-4xl tracking-tight">Accedi</h1>
       </div>
       <label className="block text-sm">Utente
@@ -20,7 +20,7 @@ export function LoginForm() {
         <input name="password" type="password" autoComplete="current-password" required className={input} />
       </label>
       {state?.error && <p role="alert" className="text-sm text-berry">{state.error}</p>}
-      <button disabled={pending} className="w-full bg-ink px-4 py-3 font-mono text-sm uppercase tracking-[0.18em] text-cream disabled:opacity-60">
+      <button disabled={pending} className="w-full bg-ink px-4 py-3 font-mono font-semibold text-base uppercase tracking-[0.18em] text-cream disabled:opacity-60">
         {pending ? 'Accesso…' : 'Entra'}
       </button>
     </form>

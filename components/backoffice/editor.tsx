@@ -23,7 +23,7 @@ const LABELS: Record<string, string> = {
 }
 const label = (key: string) => LABELS[key] ?? key
 const field = 'mt-2 w-full border border-ink/30 bg-white px-3 py-2 text-base outline-none focus:border-berry'
-const smallButton = 'inline-flex items-center gap-2 border border-ink/30 px-3 py-2 font-mono text-xs uppercase tracking-[0.14em] hover:bg-ink hover:text-cream'
+const smallButton = 'inline-flex items-center gap-2 border border-ink/30 px-3 py-2 font-mono font-semibold text-sm uppercase tracking-[0.14em] hover:bg-ink hover:text-cream'
 
 function blank(template: Json): Json {
   if (typeof template === 'string') return ''
@@ -121,7 +121,7 @@ function OrderEditor({ order, hasEvents, onChange }: { order: string[]; hasEvent
           const position = shown.indexOf(key) + 1
           return (
             <li key={key} className="flex items-center gap-3 border border-ink/15 bg-white px-4 py-3">
-              <span className="w-6 font-mono text-sm text-berry">{position || '–'}</span>
+              <span className="w-6 font-mono font-semibold text-base text-berry">{position || '–'}</span>
               <span className="flex-1">{SECTIONS[key]}<span className="ml-3 text-xs text-ink/55">{position ? (position % 2 ? 'foto a sinistra' : 'foto a destra') : 'nascosta: nessun evento inserito'}</span></span>
               <button type="button" aria-label={`Sposta in alto: ${SECTIONS[key]}`} disabled={i === 0} onClick={() => move(i, i - 1)} className="p-2 hover:text-berry disabled:opacity-30"><ArrowUp size={16} /></button>
               <button type="button" aria-label={`Sposta in basso: ${SECTIONS[key]}`} disabled={i === order.length - 1} onClick={() => move(i, i + 1)} className="p-2 hover:text-berry disabled:opacity-30"><ArrowDown size={16} /></button>
@@ -153,13 +153,13 @@ export function Editor({ initial }: { initial: SiteContent }) {
       <header className="sticky top-0 z-10 border-b border-ink/15 bg-paper/95 backdrop-blur">
         <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-3 px-5 py-4">
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.24em] text-berry">Backoffice</p>
+            <p className="font-mono font-semibold text-sm uppercase tracking-[0.24em] text-berry">Backoffice</p>
             <p className="font-serif text-xl">Osteria della Lana</p>
           </div>
           <div className="flex items-center gap-3">
             <a href="/" target="_blank" className="text-sm underline">Vedi il sito</a>
             <form action={logout}><button className={smallButton}>Esci</button></form>
-            <button type="button" onClick={submit} disabled={pending} className="bg-ink px-5 py-3 font-mono text-sm uppercase tracking-[0.18em] text-cream disabled:opacity-60">
+            <button type="button" onClick={submit} disabled={pending} className="bg-ink px-5 py-3 font-mono font-semibold text-base uppercase tracking-[0.18em] text-cream disabled:opacity-60">
               {pending ? 'Salvataggio…' : 'Salva e pubblica'}
             </button>
           </div>
