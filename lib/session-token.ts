@@ -1,7 +1,7 @@
 import { jwtVerify } from 'jose'
 
 // Parte condivisa (senza 'server-only' e senza next/headers) usabile anche dal proxy.
-export const SESSION_COOKIE_NAME = 'admin_session'
+export const SESSION_COOKIE_NAME = 'backoffice_session'
 
 export function sessionKey() {
   const secret = process.env.SESSION_SECRET

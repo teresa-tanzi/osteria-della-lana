@@ -1,7 +1,7 @@
 'use client'
 
 import { useActionState } from 'react'
-import { login } from '@/app/admin/actions'
+import { login } from '@/app/backoffice/actions'
 
 const input = 'mt-2 w-full border border-ink/30 bg-white px-4 py-3 text-base outline-none focus:border-berry'
 

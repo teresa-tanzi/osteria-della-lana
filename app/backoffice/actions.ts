@@ -29,18 +29,18 @@ export async function login(_state: { error?: string; username?: string } | unde
   }
   await clearFailures()
   await createSession()
-  redirect('/admin')
+  redirect('/backoffice')
 }
 
 export async function logout() {
   await deleteSession()
-  redirect('/admin/login')
+  redirect('/backoffice/login')
 }
 
 export async function save(data: unknown): Promise<{ ok: boolean; error?: string }> {
   if (!(await isAuthenticated())) return { ok: false, error: 'Sessione scaduta: effettua di nuovo il login.' }
   try {
-    // Nav e etichette di accessibilità non sono modificabili da /admin: restano quelle di default.
+    // Nav e etichette di accessibilità non sono modificabili da /backoffice: restano quelle di default.
     const content: SiteContent = { ...conform(site, data), nav: site.nav, header: site.header }
     await saveContent(content)
     revalidatePath('/')

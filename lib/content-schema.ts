@@ -9,7 +9,7 @@ const IMAGE_KEYS = new Set(['image', 'logo'])
 // Riporta `input` alla forma di `template` (i default in lib/data.ts): scarta chiavi
 // sconosciute, forza i tipi e usa il valore di default dove l'input non è valido.
 // Serve sia per leggere dal DB (contenuti vecchi con campi mancanti) sia per validare
-// ciò che arriva da /admin prima di salvarlo.
+// ciò che arriva da /backoffice prima di salvarlo.
 export function conform<T>(template: T, input: unknown, key = ''): T {
   if (typeof template === 'string') {
     if (typeof input !== 'string') return template

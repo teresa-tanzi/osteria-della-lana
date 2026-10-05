@@ -5,14 +5,14 @@ import { SESSION_COOKIE_NAME, verifyToken } from '@/lib/session-token'
 // L'autorizzazione vera è ricontrollata in ogni azione e route (lib/session.ts).
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
-  const isLogin = pathname === '/admin/login'
+  const isLogin = pathname === '/backoffice/login'
   const loggedIn = await verifyToken(request.cookies.get(SESSION_COOKIE_NAME)?.value)
 
-  if (!loggedIn && !isLogin) return NextResponse.redirect(new URL('/admin/login', request.url))
-  if (loggedIn && isLogin) return NextResponse.redirect(new URL('/admin', request.url))
+  if (!loggedIn && !isLogin) return NextResponse.redirect(new URL('/backoffice/login', request.url))
+  if (loggedIn && isLogin) return NextResponse.redirect(new URL('/backoffice', request.url))
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ['/admin', '/admin/:path*'],
+  matcher: ['/backoffice', '/backoffice/:path*'],
 }

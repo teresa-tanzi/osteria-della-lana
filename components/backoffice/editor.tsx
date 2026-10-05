@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react'
 import { upload } from '@vercel/blob/client'
 import { ImagePlus, Plus, Trash2 } from 'lucide-react'
-import { logout, save } from '@/app/admin/actions'
+import { logout, save } from '@/app/backoffice/actions'
 import type { SiteContent } from '@/lib/content-schema'
 
 type Json = string | Json[] | { [key: string]: Json }
@@ -38,7 +38,7 @@ function ImageField({ name, value, onChange }: { name: string; value: string; on
     if (!file) return
     setBusy(true); setError('')
     try {
-      const blob = await upload(`site/${file.name}`, file, { access: 'public', handleUploadUrl: '/api/admin/upload' })
+      const blob = await upload(`site/${file.name}`, file, { access: 'public', handleUploadUrl: '/api/backoffice/upload' })
       onChange(blob.url)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Caricamento non riuscito')
