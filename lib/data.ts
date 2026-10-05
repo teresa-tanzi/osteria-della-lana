@@ -110,5 +110,8 @@ export const site = {
   footer: {
     location: 'Valsassina, Lecco · Italia',
     backToTopText: 'Torna su',
+    // Indirizzi dei profili social: vuoti = icona nascosta.
+    facebook: 'https://www.facebook.com/osteriadellalana',
+    instagram: 'https://www.instagram.com/osteriadellalana/',
   },
 }

@@ -6,6 +6,7 @@ import { ARRAY_ITEM_TEMPLATES, type SiteContent } from '@/lib/content-schema'
 import { blankLike, getIn, setIn } from '@/lib/path'
 import { EditorProvider, useEditor, type EditorApi } from '@/components/osteria/edit-context'
 import { AddButton, Item, Paragraphs, Photo, SafeLink, SectionBar, Swatch, T } from '@/components/osteria/editable'
+import { Facebook, Instagram } from '@/components/osteria/brand-icons'
 
 // Layout in base alla posizione (1ª, 2ª, 3ª… tra le sezioni visibili), non alla sezione:
 // posizioni dispari → foto a sinistra e sfondo chiaro, pari → foto a destra e sfondo crema.
@@ -78,6 +79,15 @@ function Cta({ site, i }: SectionProps) {
   return <Section i={i}><div className="mx-auto flex max-w-7xl flex-col gap-8 sm:flex-row sm:items-end sm:justify-between"><div className="sm:flex-1"><T as="p" path="cta.eyebrow" className="font-mono font-semibold text-sm uppercase tracking-[0.24em] text-berry" /><T as="h2" path="cta.title" className="mt-4 whitespace-nowrap font-serif leading-[0.95] tracking-tight text-ink text-[clamp(1.5rem,5vw,4.5rem)]" /><T as="p" path="cta.text" className="mt-6 leading-7 text-ink/75" /></div><div className="flex shrink-0 flex-col items-start gap-3 sm:items-end"><SafeLink href={`mailto:${site.cta.email}`} className="inline-flex items-center gap-3 border-b border-ink pb-2 font-mono font-semibold text-sm uppercase tracking-[0.18em]"><T path="cta.linkText" bare /> <ArrowUpRight size={15} /></SafeLink><T as="span" path="cta.email" className="font-mono font-semibold text-sm uppercase tracking-[0.1em] text-ink/60" /></div></div></Section>
 }
 
+// Icone dei social nel piè di pagina; in modifica si vedono sempre e gli indirizzi si scrivono sotto.
+function Social({ site }: { site: SiteContent }) {
+  const { editing } = useEditor()
+  const links = [{ key: 'facebook', label: 'Facebook', Icon: Facebook }, { key: 'instagram', label: 'Instagram', Icon: Instagram }] as const
+  const shown = links.filter(({ key }) => editing || site.footer[key])
+  if (!shown.length) return null
+  return <div className="flex items-center gap-4">{shown.map(({ key, label, Icon }) => <SafeLink key={key} href={site.footer[key] || undefined} aria-label={label} title={label} target="_blank" rel="noopener noreferrer" className="-m-2 p-2 hover:text-cream"><Icon /></SafeLink>)}</div>
+}
+
 const SECTIONS: Record<string, (props: SectionProps) => React.JSX.Element> = {
   intro: Intro, story: Story, process: Process, colors: Colors, creations: Creations,
   osteria: Osteria, events: Events, values: Values,
@@ -117,6 +127,6 @@ export default function OsteriaPage({ site, onChange }: { site: SiteContent; onC
     {visible.map((key, i) => { const SectionComponent = SECTIONS[key]; return <SectionComponent key={key} site={site} i={i} /> })}
     <Cta site={site} i={visible.length} />
     <section className="bg-berry px-5 py-16 sm:px-8 sm:py-20"><div className="mx-auto flex max-w-7xl justify-center"><img src={site.logoSection.image} alt={site.brand} className="h-56 w-auto sm:h-72" /></div></section>
-    <footer className="bg-dark px-5 py-8 text-cream/60 sm:px-8"><div className="mx-auto flex max-w-7xl flex-col gap-5 text-xs sm:flex-row sm:items-center sm:justify-between"><T as="span" path="brand" className="font-serif text-lg text-cream" /><T as="span" path="footer.location" /><SafeLink href="#top" className="flex items-center gap-2 hover:text-cream"><T path="footer.backToTopText" bare /> <ArrowUpRight size={14} className="rotate-[-45deg]" /></SafeLink></div></footer>
+    <footer className="bg-dark px-5 py-8 text-cream/60 sm:px-8"><div className="mx-auto flex max-w-7xl flex-col gap-5 text-xs sm:flex-row sm:items-center sm:justify-between"><T as="span" path="brand" className="font-serif text-lg text-cream" /><Social site={site} /><T as="span" path="footer.location" /><SafeLink href="#top" className="flex items-center gap-2 hover:text-cream"><T path="footer.backToTopText" bare /> <ArrowUpRight size={14} className="rotate-[-45deg]" /></SafeLink></div>{editing && <div className="mx-auto mt-6 flex max-w-7xl flex-col gap-2 border-t border-cream/15 pt-4 font-sans text-sm sm:flex-row sm:gap-10"><span>Indirizzo Facebook: <T path="footer.facebook" className="text-cream" /></span><span>Indirizzo Instagram: <T path="footer.instagram" className="text-cream" /></span></div>}</footer>
   </main></EditorProvider>
 }

@@ -5,6 +5,7 @@ export type SiteContent = typeof site
 const MAX_TEXT = 5000
 const MAX_ITEMS = 30
 const IMAGE_KEYS = new Set(['image', 'logo'])
+const URL_KEYS = new Set(['facebook', 'instagram'])
 
 // Elemento "vuoto" per le liste che partono senza esempi (non si può ricavare da items[0]).
 export const ARRAY_ITEM_TEMPLATES: Record<string, unknown> = {
@@ -20,6 +21,8 @@ export function conform<T>(template: T, input: unknown, key = '', path = ''): T 
     if (typeof input !== 'string') return template
     const value = input.slice(0, MAX_TEXT)
     if (IMAGE_KEYS.has(key) && !/^(\/|https:\/\/)/.test(value)) return template
+    // Indirizzi esterni: solo https (o vuoto, per nascondere l'icona).
+    if (URL_KEYS.has(key) && value !== '' && !/^https:\/\/[^\s]+$/.test(value)) return template
     return value as T
   }
   if (Array.isArray(template)) {

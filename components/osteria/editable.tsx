@@ -65,9 +65,9 @@ export function T({ path, as: El = 'span', className = '', multiline = false, ba
 }
 
 // Link che in modifica non naviga (altrimenti cliccare per scrivere farebbe cambiare pagina).
-export function SafeLink({ href, className, children }: { href: string; className?: string; children: React.ReactNode }) {
+export function SafeLink({ children, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) {
   const { editing } = useEditor()
-  return <a href={href} className={className} onClick={editing ? e => e.preventDefault() : undefined}>{children}</a>
+  return <a {...props} onClick={editing ? e => e.preventDefault() : undefined}>{children}</a>
 }
 
 // ---------------------------------------------------------------------------- liste
