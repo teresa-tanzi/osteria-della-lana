@@ -62,12 +62,12 @@ export const site = {
     eyebrow: 'Le nostre creazioni', title: 'Dal filo all\'idea',
     intro: 'Tessiamo, lavoriamo a maglia, infeltriamo e sperimentiamo. Nascono così borse, tappeti, arazzi, cappelli e coloratissime palle di lana: pezzi unici, realizzati a mano.',
     items: [
-      ['Coperte', '/images/creations-1.jpeg'],
-      ['Maglie', '/images/creations-2.jpeg'],
-      ['Sciarpe', '/images/creations-3.jpeg'],
-      ['Accessori', '/images/creations-4.jpeg'],
-      ['Arazzi', '/images/creations-5.jpeg'],
-    ] as [string, string][],
+      { title: 'Coperte', image: '/images/creations-1.jpeg' },
+      { title: 'Maglie', image: '/images/creations-2.jpeg' },
+      { title: 'Sciarpe', image: '/images/creations-3.jpeg' },
+      { title: 'Accessori', image: '/images/creations-4.jpeg' },
+      { title: 'Arazzi', image: '/images/creations-5.jpeg' },
+    ],
   },
   osteria: {
     eyebrow: 'Dove ci troviamo', title: "L’Antica Osteria",
