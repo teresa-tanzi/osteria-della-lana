@@ -76,16 +76,16 @@ function Values({ site, i }: SectionProps) {
   return <Section name="values" i={i} id={SECTION_IDS.values}><div className="mx-auto max-w-7xl"><Heading path="values" /><div className="mt-14 grid gap-8 border-t border-ink/20 pt-8 md:grid-cols-3">{site.values.items.map((_, n) => <Item key={n} path="values.items" index={n} className="flex gap-5"><T as="span" path={`values.items.${n}.num`} className="font-mono font-semibold text-base text-gold" /><div><T as="h3" path={`values.items.${n}.label`} className="max-w-[12rem] font-serif text-2xl leading-tight" /><T as="p" path={`values.items.${n}.text`} className="mt-3 max-w-xs text-sm leading-6 text-ink/65" /></div></Item>)}</div><AddButton path="values.items" label="Aggiungi un valore" className="mt-8" /></div></Section>
 }
 function Cta({ site, i }: SectionProps) {
-  return <Section i={i}><div className="mx-auto flex max-w-7xl flex-col gap-8 sm:flex-row sm:items-end sm:justify-between"><div className="sm:flex-1"><T as="p" path="cta.eyebrow" className="font-mono font-semibold text-sm uppercase tracking-[0.24em] text-berry" /><T as="h2" path="cta.title" className="mt-4 whitespace-nowrap font-serif leading-[0.95] tracking-tight text-ink text-[clamp(1.5rem,5vw,4.5rem)]" /><T as="p" path="cta.text" className="mt-6 leading-7 text-ink/75" /></div><div className="flex shrink-0 flex-col items-start gap-3 sm:items-end"><SafeLink href={`mailto:${site.cta.email}`} className="inline-flex items-center gap-3 border-b border-ink pb-2 font-mono font-semibold text-sm uppercase tracking-[0.18em]"><T path="cta.linkText" bare /> <ArrowUpRight size={15} /></SafeLink><T as="span" path="cta.email" className="font-mono font-semibold text-sm uppercase tracking-[0.1em] text-ink/60" /></div></div></Section>
+  return <Section i={i}><div className="mx-auto flex max-w-7xl flex-col gap-8 sm:flex-row sm:items-end sm:justify-between"><div className="sm:flex-1"><T as="p" path="cta.eyebrow" className="font-mono font-semibold text-sm uppercase tracking-[0.24em] text-berry" /><T as="h2" path="cta.title" className="mt-4 whitespace-nowrap font-serif leading-[0.95] tracking-tight text-ink text-[clamp(1.5rem,5vw,4.5rem)]" /><T as="p" path="cta.text" className="mt-6 leading-7 text-ink/75" /></div><div className="flex shrink-0 flex-col items-start gap-3 sm:items-end"><SafeLink href={`mailto:${site.cta.email}`} className="inline-flex items-center gap-3 border-b border-ink pb-2 font-mono font-semibold text-sm uppercase tracking-[0.18em]"><T path="cta.linkText" bare /> <ArrowUpRight size={15} /></SafeLink><T as="span" path="cta.email" className="font-mono font-semibold text-sm uppercase tracking-[0.1em] text-ink/60" /><div className="text-ink/60"><Social site={site} hover="hover:text-berry" /></div></div></div></Section>
 }
 
 // Icone dei social nel piè di pagina; in modifica si vedono sempre e gli indirizzi si scrivono sotto.
-function Social({ site }: { site: SiteContent }) {
+function Social({ site, hover = 'hover:text-cream' }: { site: SiteContent; hover?: string }) {
   const { editing } = useEditor()
   const links = [{ key: 'facebook', label: 'Facebook', Icon: Facebook }, { key: 'instagram', label: 'Instagram', Icon: Instagram }] as const
   const shown = links.filter(({ key }) => editing || site.footer[key])
   if (!shown.length) return null
-  return <div className="flex items-center gap-4">{shown.map(({ key, label, Icon }) => <SafeLink key={key} href={site.footer[key] || undefined} aria-label={label} title={label} target="_blank" rel="noopener noreferrer" className="-m-2 p-2 hover:text-cream"><Icon /></SafeLink>)}</div>
+  return <div className="flex items-center gap-4">{shown.map(({ key, label, Icon }) => <SafeLink key={key} href={site.footer[key] || undefined} aria-label={label} title={label} target="_blank" rel="noopener noreferrer" className={`-m-2 p-2 ${hover}`}><Icon /></SafeLink>)}</div>
 }
 
 const SECTIONS: Record<string, (props: SectionProps) => React.JSX.Element> = {
